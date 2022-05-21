@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-validation": "^4.1.0",
+    "mysql": "^2.18.1"
+  },
+  "name": "la-vie-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/99arielsr/la-vie-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/99arielsr/la-vie-api/issues"
+  },
+  "homepage": "https://github.com/99arielsr/la-vie-api#readme",
+  "description": ""
+}
