@@ -11,16 +11,20 @@ const Pscicologos = db.define(
     },
     nome: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
       unique: true,
+      allowNull: false,
     },
     apresentacao: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     senha: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
   },
 

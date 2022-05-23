@@ -11,13 +11,15 @@ const Pacientes = db.define(
     },
     nome: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
-      unique: true,
+      allowNull: false,
     },
     data_nascimento: {
       type: DataTypes.DATE,
+      allowNull: false,
     },
   },
 

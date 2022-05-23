@@ -3,9 +3,12 @@ const {
 } = require('../models/index.js');
 
 const psicologosController = {
-    listar: (req, res) => {
-        res.status(200).json("teste")
+    listar: async (req, res) => {
 
+        // const listaDePsicologos = await Psicologos.findAll();
+
+        // res.status(200).json(listaDePsicologos);
+        res.status(200).json("teste")
     },
     listarID: (req, res) => {
         res.status(200).json("teste")
