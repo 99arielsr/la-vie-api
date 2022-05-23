@@ -6,6 +6,7 @@
     "express-validation": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "sequelize": "^6.19.2"
   },
   "devDependencies": {
