@@ -1,4 +1,4 @@
-const { Atendimentos } = requeire('../models/index.js');
+const { Atendimentos } = require('../models/index.js');
 
 const atendimentosController = {
   listar: (req, res) => {

@@ -14,6 +14,11 @@ Pacientes.hasMany(Atendimentos, {
   foreignKey: 'paciente_id'
 })
 
+Atendimentos.belongsTo(Pacientes, {
+    foreignKey: 'paciente_id'
+})
+
+
 module.exports = {
   Psicologos,
   Pacientes,
