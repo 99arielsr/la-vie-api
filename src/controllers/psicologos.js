@@ -30,11 +30,36 @@ const psicologosController = {
 
     res.status(201).json(novoPsicologo);
   },
-  atualizar: (req, res) => {
-    res.status(200).json("teste");
+  atualizar: async (req, res) => {
+    const { id } = req.params;
+    const { nome, email, apresentacao, senha } = req.body;
+    let psicologos = await Psicologos.findByPk(id);
+
+    if (!psicologos) {
+      return res
+        .status(404)
+        .json(`O psicologo ${id} não foi encontrado em nosso registro. Confira o ID e tente novamente.`);
+    }
+
+    await Psicologos.update({ nome, email, apresentacao, senha }, { where: { id } });
+
+    const pacienteAtualizado = await Psicologos.findByPk(id);
+    res.status(200).json(pacienteAtualizado);
   },
-  deletar: (req, res) => {
-    res.status(200).json("teste");
+  deletar: async (req, res) => {
+    const { id } = req.params;
+
+    const psicologo = await Psicologos.findByPk(id);
+
+    if (!psicologo) {
+      res.status(404).json(`O psicologo ${id} não foi encontrado em nosso registro. Confira o ID e tente novamente.`);
+    }
+
+    await Psicologos.destroy({
+      where: {id}
+    });
+
+    res.status(204).send("");
   },
 };
 

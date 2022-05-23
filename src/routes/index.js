@@ -22,5 +22,6 @@ routes.delete("/psicologos/:id", psicologoController.deletar);
 //Rotas Atendimento
 routes.get("/atendimentos", atendimentosController.listar);
 routes.get("/atendimentos/:id", atendimentosController.listarID);
+routes.post("/atendimentos", atendimentosController.cadastrar);
 
 module.exports = routes;
