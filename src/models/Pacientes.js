@@ -25,6 +25,7 @@ const Pacientes = db.define(
 
   {
     tableName: "pacientes",
+    timestamps: false,
   }
 );
 

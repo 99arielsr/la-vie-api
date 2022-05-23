@@ -42,6 +42,7 @@ const Atendimentos = db.define(
   {
     tableName: "atendimentos",
     underscored: true,
+    timestamps: false,
   }
 );
 

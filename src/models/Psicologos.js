@@ -30,6 +30,7 @@ const Pscicologos = db.define(
 
   {
     tableName: "psicologos",
+    timestamps: false,
   }
 );
 
