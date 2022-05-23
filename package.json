@@ -1,14 +1,21 @@
 {
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.18.1",
+    "express-jwt": "^7.7.2",
     "express-validation": "^4.1.0",
-    "mysql": "^2.18.1"
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.16",
+    "sequelize": "^6.19.2"
   },
   "name": "la-vie-api",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js",
+    "dev": "nodemon --watch src src/app.js"
   },
   "repository": {
     "type": "git",
