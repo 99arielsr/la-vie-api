@@ -1,17 +1,21 @@
 const express = require("express");
 const routes = express.Router();
 
+//controllers
 const pacientesController = require("../controllers/pacientes");
 const psicologoController = require("../controllers/psicologos")
 const atendimentosController = require("../controllers/atendimentos");
-const authValidator = require("../validators/auth/login")
+
+//validators
+const authValidator = require("../validators/auth/login");
+const pacientesValidators = require("../validators/pacientes")
 
 //Rotas Pacientes
 routes.get("/pacientes", pacientesController.listar);
-routes.get("/pacientes/:id", pacientesController.listarID);
-routes.post("/pacientes", pacientesController.cadastrar);
-routes.put("/pacientes/:id", pacientesController.atualizar);
-routes.delete("/pacientes/:id", pacientesController.deletar);
+routes.get("/pacientes/:id", pacientesValidators.listarID, pacientesController.listarID);
+routes.post("/pacientes", pacientesValidators.cadastrar ,pacientesController.cadastrar);
+routes.put("/pacientes/:id", pacientesValidators.atualizar, pacientesController.atualizar);
+routes.delete("/pacientes/:id", pacientesValidators.deletar, pacientesController.deletar);
 
 //Rotas Psicologos
 routes.get("/psicologos", psicologoController.listar);
