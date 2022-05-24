@@ -1,22 +1,25 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const { Psicologos } = require("../models/index.js");
+const { Psicologos, Atendimentos } = require("../models/index.js");
 const secret = require("../configs/secret");
 
 const psicologosController = {
   listar: async (req, res) => {
-    const listaDePsicologos = await Psicologos.findAll( {
+    const listaDePsicologos = await Psicologos.findAll({
       attributes: { exclude: ["senha"] },
-   });
+    });
 
-    return res.status(200).json({listaDePsicologos});
+    return res.status(200).json(listaDePsicologos);
   },
   listarID: async (req, res) => {
     const { id } = req.params;
 
     const Psicologo = await Psicologos.findByPk(id, {
-      include: [{ all: true }],
+      include: [
+        { model: Atendimentos, attributes: { exclude: ["psicologos_id"] } },
+      ],
+      attributes: { exclude: ["senha"] },
     });
 
     if (!Psicologo) {
@@ -35,14 +38,14 @@ const psicologosController = {
 
     const novaSenha = bcrypt.hashSync(senha, 10);
 
-    const novoPsicologo = await Psicologos.create({
+    await Psicologos.create({
       nome,
       email,
       apresentacao,
       senha: novaSenha,
     });
 
-    res.status(201).json(novoPsicologo);
+    res.status(201).json({ nome, email, apresentacao });
   },
   atualizar: async (req, res) => {
     const { id } = req.params;
@@ -68,7 +71,9 @@ const psicologosController = {
       await Psicologos.update({ nome, email, apresentacao }, { where: { id } });
     }
 
-    const pacienteAtualizado = await Psicologos.findByPk(id);
+    const pacienteAtualizado = await Psicologos.findByPk(id, {
+      attributes: { exclude: ["senha"] },
+    });
     res.status(200).json(pacienteAtualizado);
   },
   deletar: async (req, res) => {
@@ -116,7 +121,7 @@ const psicologosController = {
       token,
       user,
     });
-  }
+  },
 };
 
 module.exports = psicologosController;

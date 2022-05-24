@@ -1,14 +1,18 @@
-const { Atendimentos } = require('../models/index.js');
+const { Atendimentos, Pacientes, Psicologos } = require("../models/index.js");
 
 const atendimentosController = {
   listar: async (req, res) => {
-    const listaDeAtendimentos = await Atendimentos.findAll();
+    const listaDeAtendimentos = await Atendimentos.findAll({
+      include: [{ model: Pacientes, attributes: ["nome"] },{ model: Psicologos, attributes: ["nome"] }],
+    });
     return res.status(200).json(listaDeAtendimentos);
   },
   listarID: async (req, res) => {
     const { id } = req.params;
 
-    const atendimento = await Atendimentos.findByPk(id, { include: [{ all: true }] });
+    const atendimento = await Atendimentos.findByPk(id, {
+      include: [Pacientes, { model: Psicologos, attributes: { exclude: ["senha"] } }],
+    });
 
     if (!atendimento) {
       return res
@@ -21,17 +25,17 @@ const atendimentosController = {
   },
 
   cadastrar: async (req, res) => {
-    // const psicologos_id = pegar do token 
+    // const psicologos_id = pegar do token
     const { data, observacao, pacientes_id, psicologos_id } = req.body;
 
     const novoAtendimento = await Atendimentos.create({
       data,
       observacao,
       pacientes_id,
-      psicologos_id
+      psicologos_id,
     });
     res.status(201).json(novoAtendimento);
   },
-}
+};
 
-module.exports = atendimentosController 
+module.exports = atendimentosController;

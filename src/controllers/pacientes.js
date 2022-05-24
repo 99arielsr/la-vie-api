@@ -1,4 +1,4 @@
-const { Pacientes } = require("../models/index.js");
+const { Pacientes, Atendimentos } = require("../models/index.js");
 
 const pacientesController = {
   listar: async (req, res) => {
@@ -8,7 +8,10 @@ const pacientesController = {
   listarID: async (req, res) => {
     const { id } = req.params;
 
-    const Paciente = await Pacientes.findByPk(id, { include: [{ all: true }] });
+    const Paciente = await Pacientes.findByPk(id,{
+      include: [
+        { model: Atendimentos, attributes: { exclude: ["pacientes_id"] } },
+      ],});
 
     if (!Paciente) {
       return res
