@@ -5,6 +5,6 @@ module.exports = validate({
     nome: Joi.string(),
     email: Joi.string().email(),
     apresentacao: Joi.string(),
-    senha: Joi.string().min(6),
+    senha: Joi.string().min("6"), 
   }),
 });
