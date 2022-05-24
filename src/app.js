@@ -15,7 +15,7 @@ const port = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
-  jwtMiddleware.unless({ path: ["/", "/psicologos/login"] })
+  jwtMiddleware.unless({ path: ["/", "/psicologos/login", "/psicologos"] })
 );
 app.use(authMiddleware);
 app.use(routes);

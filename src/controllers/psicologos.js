@@ -6,9 +6,11 @@ const secret = require("../configs/secret");
 
 const psicologosController = {
   listar: async (req, res) => {
-    const listaDePsicologos = await Psicologos.findAll();
+    const listaDePsicologos = await Psicologos.findAll( {
+      attributes: { exclude: ["senha"] },
+   });
 
-    return res.status(200).json(listaDePsicologos);
+    return res.status(200).json({listaDePsicologos});
   },
   listarID: async (req, res) => {
     const { id } = req.params;
@@ -101,6 +103,19 @@ const psicologosController = {
     if (!psicologo || !bcrypt.compareSync(senha, psicologo.senha)) {
       return res.status(401).json("email ou senha inválido");
     }
+
+    const user = {
+      id: psicologo.id,
+      nome: psicologo.nome,
+      email: psicologo.email,
+    };
+
+    const token = jwt.sign(user, secret.key);
+
+    return res.json({
+      token,
+      user,
+    });
   }
 };
 
