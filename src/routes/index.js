@@ -28,7 +28,7 @@ routes.put("/psicologos/:id",psicologosValidators.atualizar, psicologoController
 routes.delete("/psicologos/:id", psicologosValidators.deletar, psicologoController.deletar);
 
 //login
-routes.post("/psicologos/login", authValidator, psicologoController.login);
+routes.post("/login", authValidator, psicologoController.login);
 
 //Rotas Atendimento
 routes.get("/atendimentos", atendimentosController.listar);
