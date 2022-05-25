@@ -1,4 +1,6 @@
 const { Atendimentos, Pacientes, Psicologos } = require("../models/index.js");
+base64 = require('base-64');
+const utf8 = require('utf8');
 
 const atendimentosController = {
   listar: async (req, res) => {
@@ -25,8 +27,13 @@ const atendimentosController = {
   },
 
   cadastrar: async (req, res) => {
-    // const psicologos_id = pegar do token
-    const { data, observacao, pacientes_id, psicologos_id } = req.body;
+    const token = req.headers.authorization.slice(7).split(".")
+    const bytes = base64.decode(token[1]);
+    const text = utf8.decode(bytes);
+    const tokenInfo = JSON.parse(text);
+    const psicologos_id = tokenInfo.id
+   
+    const { data, observacao, pacientes_id } = req.body;
 
     const novoAtendimento = await Atendimentos.create({
       data,
