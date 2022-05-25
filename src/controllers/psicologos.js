@@ -71,10 +71,10 @@ const psicologosController = {
       await Psicologos.update({ nome, email, apresentacao }, { where: { id } });
     }
 
-    const pacienteAtualizado = await Psicologos.findByPk(id, {
+    const psicologoAtualizado = await Psicologos.findByPk(id, {
       attributes: { exclude: ["senha"] },
     });
-    res.status(200).json(pacienteAtualizado);
+    res.status(200).json(psicologoAtualizado);
   },
   deletar: async (req, res) => {
     const { id } = req.params;
