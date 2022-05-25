@@ -3,6 +3,7 @@ const Atendimentos = require("./Atendimentos");
 const Pacientes = require("./Pacientes");
 const Psicologos = require("./Psicologos");
 
+
 Psicologos.hasMany(Atendimentos, {
   foreignKey: 'psicologos_id'
 });
