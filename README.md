@@ -31,7 +31,7 @@ Também ficamos responsáveis por criar o banco de dados que inclui: Criação d
 
 ---
 
-## :link: [Documentação API.](https://99arielsr.github.io/la-vie-api/)
+## :link: [Documentação API.](https://lavie-api.vercel.app/)
 
 ## :computer: Desenvolvedores
 [<img src="https://avatars.githubusercontent.com/u/102430174?v=4" width=115> <br> <sub>Adriano Leal </sub>](https://github.com/AdrianoLSou) | [<img src="https://avatars.githubusercontent.com/u/95944401?v=4" width=115> <br> <sub>Ariel Rodrigues</sub>](https://github.com/99arielsr) | [<img src="https://avatars.githubusercontent.com/u/40073484?v=4" width=115> <br> <sub>Beatriz Sanchez</sub>](https://github.com/Beatriz-Sanchez) | [<img src="https://avatars.githubusercontent.com/u/102391940?v=4" width=115> <br> <sub>Eduardo Gobbato</sub>](https://github.com/Egobbato) |  <br>
