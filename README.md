@@ -16,8 +16,8 @@ Também ficamos responsáveis por criar o banco de dados que inclui: Criação d
 ## Funcionalidades criadas: 
 
 - Validação de login para Psicólogos;
-- CRUD para Psicologos, Pacientes e Agendamentos;
-- Dashboard para visualização de número de pacientes, psicologos e atendimentos;
+- CRUD para Psicólogos, Pacientes e Agendamentos;
+- Dashboard para visualização de número de pacientes, psicólogos e atendimentos;
 - Gerar a documentação da API.
 
 ## Critérios de Avaliação: 
