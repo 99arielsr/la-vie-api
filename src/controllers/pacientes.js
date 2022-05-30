@@ -8,10 +8,11 @@ const pacientesController = {
   listarID: async (req, res) => {
     const { id } = req.params;
 
-    const Paciente = await Pacientes.findByPk(id,{
+    const Paciente = await Pacientes.findByPk(id, {
       include: [
         { model: Atendimentos, attributes: { exclude: ["pacientes_id"] } },
-      ],});
+      ],
+    });
 
     if (!Paciente) {
       return res
@@ -25,6 +26,12 @@ const pacientesController = {
 
   cadastrar: async (req, res) => {
     const { nome, email, data_nascimento } = req.body;
+
+    const emailPaciente = await Pacientes.findOne({ where: { email: email } });
+
+    if (emailPaciente) {
+      return res.status(401).json({ error: "Email já existente" });
+    }
 
     const novoPaciente = await Pacientes.create({
       nome,
@@ -42,7 +49,9 @@ const pacientesController = {
     if (!pacientes) {
       return res
         .status(404)
-        .json(`O paciente ${id} não foi encontrado em nosso registro. Confira o ID e tente novamente.`);
+        .json(
+          `O paciente ${id} não foi encontrado em nosso registro. Confira o ID e tente novamente.`
+        );
     }
 
     await Pacientes.update({ nome, email, data_nascimento }, { where: { id } });
@@ -56,11 +65,15 @@ const pacientesController = {
     const paciente = await Pacientes.findByPk(id);
 
     if (!paciente) {
-      res.status(404).json(`O paciente ${id} não foi encontrado em nosso registro. Confira o ID e tente novamente.`);
+      res
+        .status(404)
+        .json(
+          `O paciente ${id} não foi encontrado em nosso registro. Confira o ID e tente novamente.`
+        );
     }
 
     await Pacientes.destroy({
-      where: {id}
+      where: { id },
     });
 
     res.status(204).send("");

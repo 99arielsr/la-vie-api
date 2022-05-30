@@ -7,7 +7,8 @@ CREATE TABLE `lavie`.`pacientes` (
   `nome` VARCHAR(200) NOT NULL,
   `email` VARCHAR(200) NOT NULL,
   `data_nascimento` DATE NOT NULL,
-  PRIMARY KEY (`id`));
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_email` (`email`));
 
 CREATE TABLE `lavie`.`psicologos` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -15,7 +16,8 @@ CREATE TABLE `lavie`.`psicologos` (
   `email` VARCHAR(45) NOT NULL,
   `apresentacao` VARCHAR(255) NOT NULL,
   `senha` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id`));
+   PRIMARY KEY (`id`),
+   UNIQUE KEY `UK_email` (`email`));
   
   CREATE TABLE `lavie`.`atendimentos` (
   `id` INT NOT NULL AUTO_INCREMENT,

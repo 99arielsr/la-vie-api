@@ -38,6 +38,14 @@ const psicologosController = {
 
     const novaSenha = bcrypt.hashSync(senha, 10);
 
+    const emailPsicologo = await Psicologos.findOne({
+      where: { email: email },
+    });
+
+    if (emailPsicologo) {
+      return res.status(401).json({ error: "Email já existente" });
+    }
+
     await Psicologos.create({
       nome,
       email,
